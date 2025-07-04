@@ -89,7 +89,7 @@ resource "aws_vpc" "recipe_main" {
   instance_tenancy     = "default"
 
   tags = {
-    Name = "Chapter 3 VPC"
+    Name = "Recipe 3 VPC"
   }
 }
 
@@ -97,7 +97,7 @@ resource "aws_internet_gateway" "recipe_main" {
   vpc_id = aws_vpc.recipe_main.id
 
   tags = {
-    Name = "Chapter 3 IGW"
+    Name = "Recipe 3 IGW"
   }
 }
 
@@ -193,7 +193,7 @@ resource "aws_nat_gateway" "recipe_main" {
   subnet_id     = aws_subnet.recipe_public_1.id
 
   tags = {
-    Name = "Chapter 3 NAT Gateway"
+    Name = "Recipe 3 NAT Gateway"
   }
 }
 
@@ -279,12 +279,12 @@ resource "aws_instance" "recipe_main" {
   EOF
 
   tags = {
-    Name = "Chapter 3 Instance"
+    Name = "Recipe 3 Instance"
   }
 }
 
 resource "aws_lb" "recipe_main" {
-  name               = "chapter-3-alb"
+  name               = "recipe-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.recipe_alb.id]
@@ -292,7 +292,7 @@ resource "aws_lb" "recipe_main" {
 }
 
 resource "aws_lb_target_group" "recipe_main" {
-  name        = "chapter-3-tg"
+  name        = "recipe-tg"
   port        = 80
   protocol    = "HTTP"
   vpc_id      = aws_vpc.recipe_main.id
@@ -323,7 +323,7 @@ resource "aws_lb_target_group_attachment" "recipe_main" {
 }
 
 resource "aws_s3_bucket" "recipe_sharing_app" {
-  bucket = "frontend-chapter-3-${random_id.stack.hex}"
+  bucket = "frontend-recipe-${random_id.stack.hex}"
 
   tags = {
     Name = "Frontend Bucket"
