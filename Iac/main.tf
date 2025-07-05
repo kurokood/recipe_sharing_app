@@ -249,14 +249,13 @@ resource "aws_instance" "recipe_main" {
   iam_instance_profile   = aws_iam_instance_profile.ec2_instance_profile.name
   subnet_id              = aws_subnet.recipe_private_1.id
   vpc_security_group_ids = [aws_security_group.ec2.id]
-  key_name               = "ssh_test_key"
 
   user_data = <<-EOF
     #!/bin/bash
     sudo apt update
     sudo apt install -y python3 python3-pip python3-virtualenv nginx jq
-    git clone ${var.git_repo_url}
-    cp -r $(echo "${var.git_repo_url}" | sed 's/.*\///' | sed 's/\.git//')/recipe_sharing_app/backend . ; rm -rf $(echo "${var.git_repo_url}" | sed 's/.*\///' | sed 's/\.git//') ; cd backend
+    git clone ${var.git-repo-url}
+    cp -r $(echo "${var.git-repo-url}" | sed 's/.*\///' | sed 's/\.git//')/chapter3/code/backend . ; rm -rf $(echo "${var.git-repo-url}" | sed 's/.*\///' | sed 's/\.git//') ; cd backend
 
     sed -i "s/SELECTED_REGION/$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')/g" main.py
     
@@ -335,14 +334,6 @@ resource "random_id" "stack" {
   byte_length = 8
 }
 
-resource "aws_s3_bucket_website_configuration" "recipe_sharing_app" {
-  bucket = aws_s3_bucket.recipe_sharing_app.id
-
-  index_document {
-    suffix = "index.html"
-  }
-}
-
 resource "aws_s3_bucket_public_access_block" "recipe_sharing_app" {
   bucket = aws_s3_bucket.recipe_sharing_app.id
 
@@ -395,6 +386,7 @@ resource "aws_cloudfront_distribution" "recipe_sharing_app" {
   default_root_object = "index.html"
   http_version        = "http2"
   price_class         = "PriceClass_100"
+  aliases             = ["recipe.monvillarin.com"]
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD"]

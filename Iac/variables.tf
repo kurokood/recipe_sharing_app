@@ -10,8 +10,8 @@ variable "alb_certificate_arn" {
   default     = "arn:aws:acm:us-east-1:026045577315:certificate/6f9106a0-d143-4bdb-8d9c-60ec70b4e3ee"
 }
 
-variable "git_repo_url" {
+variable "git-repo-url" {
   description = "URL of the Git repository to clone"
   type        = string
-  default     = "https://github.com/kurokood/recipe_sharing_app.git"
+  default     = "https://github.com/PacktPublishing/AWS-Cloud-Projects.git"
 }
