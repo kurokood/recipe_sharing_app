@@ -1,4 +1,4 @@
-name: Deploy Frontend to S3
+name: Recipe Sharing App
 
 on:
   push:
@@ -29,5 +29,5 @@ jobs:
 
     - name: Invalidate CloudFront Caches
       run: |
-        aws cloudfront create-invalidation --distribution-id EQF3Y3Z48KAQW --paths "/*"
+        aws cloudfront create-invalidation --distribution-id E8IYIB1EMFFI5 --paths "/*"
 
