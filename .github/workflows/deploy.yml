@@ -27,7 +27,3 @@ jobs:
       run: aws s3 sync . s3://recipe-sharing-app121485 --delete
       working-directory: frontend
 
-    - name: Invalidate CloudFront Caches
-      run: |
-        aws cloudfront create-invalidation --distribution-id EF8XE331B8ZNY --paths "/*"
-

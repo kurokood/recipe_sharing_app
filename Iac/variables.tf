@@ -13,5 +13,5 @@ variable "alb_certificate_arn" {
 variable "git-repo-url" {
   description = "URL of the Git repository to clone"
   type        = string
-  default     = "https://github.com/PacktPublishing/AWS-Cloud-Projects.git"
+  default     = "https://github.com/kurokood/recipe_sharing_app.git"
 }

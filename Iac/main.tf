@@ -1,9 +1,16 @@
 terraform {
+  required_version = ">= 1.10.0"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
       version = ">= 5.0"
     }
+  }
+  backend "s3" {
+    bucket         = "tf-state-store-121485"
+    key            = "recipe-sharing-app/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "tf-state-lock-121485"
   }
 }
 
@@ -255,7 +262,7 @@ resource "aws_instance" "recipe_main" {
     sudo apt update
     sudo apt install -y python3 python3-pip python3-virtualenv nginx jq
     git clone ${var.git-repo-url}
-    cp -r $(echo "${var.git-repo-url}" | sed 's/.*\///' | sed 's/\.git//')/chapter3/code/backend . ; rm -rf $(echo "${var.git-repo-url}" | sed 's/.*\///' | sed 's/\.git//') ; cd backend
+    cp -r $(echo "${var.git-repo-url}" | sed 's/.*\///' | sed 's/\.git//')/backend . ; rm -rf $(echo "${var.git-repo-url}" | sed 's/.*\///' | sed 's/\.git//') ; cd backend
 
     sed -i "s/SELECTED_REGION/$(curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')/g" main.py
     
