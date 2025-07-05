@@ -24,7 +24,7 @@ jobs:
         aws-region: us-east-1
 
     - name: Sync frontend to S3
-      run: aws s3 sync . s3://frontend-chapter-3-e08b86da6ed1ac32 --delete
+      run: aws s3 sync . s3://recipe-sharing-app121485 --delete
       working-directory: frontend
 
     - name: Invalidate CloudFront Caches

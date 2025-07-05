@@ -249,6 +249,7 @@ resource "aws_instance" "recipe_main" {
   iam_instance_profile   = aws_iam_instance_profile.ec2_instance_profile.name
   subnet_id              = aws_subnet.recipe_private_1.id
   vpc_security_group_ids = [aws_security_group.ec2.id]
+  key_name               = "ssh_test_key"
 
   user_data = <<-EOF
     #!/bin/bash
@@ -279,7 +280,7 @@ resource "aws_instance" "recipe_main" {
   EOF
 
   tags = {
-    Name = "Recipe 3 Instance"
+    Name = "Recipe_API"
   }
 }
 
@@ -323,7 +324,7 @@ resource "aws_lb_target_group_attachment" "recipe_main" {
 }
 
 resource "aws_s3_bucket" "recipe_sharing_app" {
-  bucket = "frontend-recipe-${random_id.stack.hex}"
+  bucket = "recipe-sharing-app121485"
 
   tags = {
     Name = "Frontend Bucket"
@@ -351,8 +352,12 @@ resource "aws_s3_bucket_public_access_block" "recipe_sharing_app" {
   restrict_public_buckets = true
 }
 
-resource "aws_cloudfront_origin_access_identity" "recipe_sharing_app" {
-  comment = "Origin Access Identity for ${aws_s3_bucket.recipe_sharing_app.id}"
+resource "aws_cloudfront_origin_access_control" "recipe_sharing_app" {
+  name                              = "OAC for ${aws_s3_bucket.recipe_sharing_app.id}"
+  description                       = "Origin Access Control for S3 bucket"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
 
 resource "aws_s3_bucket_policy" "recipe_sharing_app" {
@@ -364,10 +369,15 @@ resource "aws_s3_bucket_policy" "recipe_sharing_app" {
       {
         Effect = "Allow"
         Principal = {
-          AWS = aws_cloudfront_origin_access_identity.recipe_sharing_app.iam_arn
+          Service = "cloudfront.amazonaws.com"
         }
         Action   = "s3:GetObject"
         Resource = "${aws_s3_bucket.recipe_sharing_app.arn}/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceArn" = aws_cloudfront_distribution.recipe_sharing_app.arn
+          }
+        }
       }
     ]
   })
@@ -375,12 +385,9 @@ resource "aws_s3_bucket_policy" "recipe_sharing_app" {
 
 resource "aws_cloudfront_distribution" "recipe_sharing_app" {
   origin {
-    domain_name = aws_s3_bucket.recipe_sharing_app.bucket_regional_domain_name
-    origin_id   = "origin-s3-${aws_s3_bucket.recipe_sharing_app.id}"
-
-    s3_origin_config {
-      origin_access_identity = aws_cloudfront_origin_access_identity.recipe_sharing_app.cloudfront_access_identity_path
-    }
+    domain_name              = aws_s3_bucket.recipe_sharing_app.bucket_regional_domain_name
+    origin_id                = "origin-s3-${aws_s3_bucket.recipe_sharing_app.id}"
+    origin_access_control_id = aws_cloudfront_origin_access_control.recipe_sharing_app.id
   }
 
   enabled             = true
