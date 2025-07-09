@@ -1,17 +1,29 @@
-variable "instance_type" {
-  description = "EC2 instance type"
+variable "user_pool_client_name" {
   type        = string
-  default     = "t2.micro"
+  description = "The name for the Cognito User Pool Client"
+  default     = "mon villarin"
 }
 
-variable "alb_certificate_arn" {
-  description = "The ARN of the SSL certificate for the Application Load Balancer"
+variable "api_name" {
   type        = string
-  default     = "arn:aws:acm:us-east-1:026045577315:certificate/6f9106a0-d143-4bdb-8d9c-60ec70b4e3ee"
+  description = "API Name"
+  default     = "recipe-app-api"
 }
 
-variable "git-repo-url" {
-  description = "URL of the Git repository to clone"
+variable "user_pool_name" {
   type        = string
-  default     = "https://github.com/kurokood/recipe_sharing_app.git"
+  description = "The name for the Cognito User Pool"
+  default     = "cognito-userpool"
+}
+
+variable "username" {
+  type        = string
+  description = "The username for the initial user"
+  default     = "admin"
+}
+
+variable "user_email" {
+  type        = string
+  description = "The email for the initial user"
+  default     = "villarinmon@gmail.com"
 }
