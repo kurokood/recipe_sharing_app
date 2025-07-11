@@ -1,16 +1,11 @@
-## Recipe Sharing APP
+## Serverless Recipe Sharing App with Secure User Authentication via Amazon Cognito
 
 ## Project Description
 ![](https://github.com/kurokood/recipe_sharing_app/blob/master/app-frontend.png)
 
-This portfolio site is inspired by the concepts of the Cloud Resume Challenge by Forrest Brazeal. It demonstrates a foundational understanding of serverless architecture through a practical, hands-on project. The system architecture is illustrated below.
+Recipe Sharing App is a fully serverless, cloud-native web application built on AWS. The frontend is hosted on Amazon S3 and delivered globally through CloudFront, with a custom domain managed via Route 53. User authentication is securely handled using Amazon Cognito, allowing users to sign up, log in, and manage their sessions.
 
-In this project, I provisioned a personal static portfolio site hosted on Amazon S3, integrated with Amazon CloudFront for content delivery and a custom domain managed via Route 53. The site also features a visitor counter implemented using API Gateway, an AWS Lambda function, and Amazon DynamoDB for storing visit data.
-
-NOTE: I provisioned the entire infrastructure using Infrastructure as Code (IaC) with Terraform.
-
-You can use the information and instructions below to replicate this project and gain hands-on experience with core Terraform and AWS concepts.
-Happy learning! ☁️
+The application backend is powered by API Gateway and AWS Lambda, which manage the core logic for submitting and retrieving recipes. All recipe data is stored in Amazon DynamoDB, a scalable NoSQL database. This project demonstrates best practices in serverless architecture, authentication, and real-world use of AWS services for modern web applications.
 
 ## Architectural Diagram
 
