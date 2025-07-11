@@ -16,15 +16,15 @@ Happy learning! ☁️
 
 ![](https://github.com/kurokood/recipe_sharing_app/blob/master/recipe-sharing-app.png)
 
-## Components
-| Feature           | Description                                                             |
-|------------------|-------------------------------------------------------------------------|
-| Route 53         | Configured a custom domain for the resume site                          |
-| CloudFront       | Serves static content from S3 through a global CDN                      |
-| S3               | Hosts the static files for the resume website                           |
-| API Gateway      | Exposes a public API endpoint that routes requests to the Lambda function |
-| Lambda Function  | Handles the application logic for processing visitor count              |
-| DynamoDB Table   | Stores the website's visitor count data                                 |
+## Architectural Components
+| Components           | Description                                                                 |
+|------------------|-----------------------------------------------------------------------------|
+| Route 53         | Manages a custom domain for the recipe sharing application                 |
+| CloudFront       | Delivers static content from S3 via a global content delivery network (CDN) |
+| S3               | Hosts the static files of the recipe sharing app                           |
+| API Gateway      | Provides a public API endpoint that forwards requests to the Lambda function |
+| Lambda Function  | Processes the application's logic for handling user read/write operations  |
+| DynamoDB Table   | Stores user-submitted recipes in a NoSQL database                          |
 
 ## Key Takeaways:
 This project serves as a solid foundation for gaining hands-on experience with serverless computing and AWS services. Below is a detailed overview of the key takeaways:
