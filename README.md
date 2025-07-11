@@ -22,19 +22,18 @@ Happy learning! ☁️
 | Route 53         | Manages a custom domain for the recipe sharing application                 |
 | CloudFront       | Delivers static content from S3 via a global content delivery network (CDN) |
 | S3               | Hosts the static files of the recipe sharing app                           |
+| Amazon Cognito   | Enables sercure user sig-up, sign-in, and access control for the app        |
 | API Gateway      | Provides a public API endpoint that forwards requests to the Lambda function |
 | Lambda Function  | Processes the application's logic for handling user read/write operations  |
 | DynamoDB Table   | Stores user-submitted recipes in a NoSQL database                          |
 
 ## Key Takeaways:
 This project serves as a solid foundation for gaining hands-on experience with serverless computing and AWS services. Below is a detailed overview of the key takeaways:
-- Built and deployed a serverless, cloud-native personal resume website.
-- Gained hands-on experience with AWS core services like S3, CloudFront, Route 53, Lambda, API Gateway, DynamoDB, IAM, and more.
-- Connected a frontend to a backend using API Gateway + Lambda + DynamoDB to track site visits in real time.
-- Applied Infrastructure as Code (IaC) using Terraform to manage and provision AWS resources efficiently.
-- Integrated CI/CD workflows with GitHub Actions to automate testing and deployments.
-- Strengthened understanding of cloud architecture, automation, and scalability principles.
+- Used Amazon S3 and Route 53 to host and serve the static frontend with a custom domain.
+- Integrated Amazon Cognito to securely manage user authentication.
+- Built backend APIs with API Gateway and Lambda to handle recipe creation and retrieval logic.
+- Utilized DynamoDB to store and manage user-submitted recipes in a scalable NoSQL database.
 
 ###  Author: Mon Villarin
  📌 Portfolio Site: [Mon Villarin](https://monvillarin.com)  
- 📌 Blog Post: [From Resume to the Cloud: How I Built and Deployed My Cloud Resume Challenge](https://blog.monvillarin.com/from-resume-to-the-cloud-how-i-built-and-deployed-my-cloud-resume-challenge)
+ 📌 Blog Post: [Building a Secure Serverless Recipe App with AWS and Terraform](https://blog.monvillarin.com/building-a-secure-serverless-recipe-app-with-aws-and-terraform)
