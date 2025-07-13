@@ -1,5 +1,5 @@
 data "aws_route53_zone" "hosted_zone" {
-  name         = "monvillarin.com"
+  name         = var.zone_name
   private_zone = false
 }
 
