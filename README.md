@@ -31,5 +31,5 @@ This project serves as a solid foundation for gaining hands-on experience with s
 
 ###  Author: Mon Villarin
  📌 LinkedIn: [Ramon Villarin](https://www.linkedin.com/in/ramon-villarin/)  
- 📌 Portfolio Site: [Mon Villarin](https://monvillarin.com)  
+ 📌 Portfolio Site: [MonVillarin.com](https://monvillarin.com)  
  📌 Blog Post: [Building a Secure Serverless Recipe App with AWS and Terraform](https://blog.monvillarin.com/building-a-secure-serverless-recipe-app-with-aws-and-terraform)
