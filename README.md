@@ -30,6 +30,6 @@ This project serves as a solid foundation for gaining hands-on experience with s
 - Utilized DynamoDB to store and manage user-submitted recipes in a scalable NoSQL database.
 
 ###  Author: Mon Villarin
- 📌 LinkedIn: [Ramon Villarin](https://www.linkedin.com/in/ramon-villarin/)
+ 📌 LinkedIn: [Ramon Villarin](https://www.linkedin.com/in/ramon-villarin/)  
  📌 Portfolio Site: [Mon Villarin](https://monvillarin.com)  
  📌 Blog Post: [Building a Secure Serverless Recipe App with AWS and Terraform](https://blog.monvillarin.com/building-a-secure-serverless-recipe-app-with-aws-and-terraform)
