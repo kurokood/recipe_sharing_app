@@ -32,4 +32,4 @@ This project serves as a solid foundation for gaining hands-on experience with s
 ###  Author: Mon Villarin
  📌 LinkedIn: [Ramon Villarin](https://www.linkedin.com/in/ramon-villarin/)  
  📌 Portfolio Site: [MonVillarin.com](https://monvillarin.com)  
- 📌 Blog Post: [Building a Secure Serverless Recipe App with AWS and Terraform](https://blog.monvillarin.com/building-a-secure-serverless-recipe-app-with-aws-and-terraform)
+ 📌 Blog Post: [Serverless Recipe Sharing App with AWS Cognito and Terraform](https://blog.monvillarin.com/serverless-recipe-sharing-app-with-aws-cognito-and-terraform)
